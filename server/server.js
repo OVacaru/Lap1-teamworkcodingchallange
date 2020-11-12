@@ -32,10 +32,10 @@ function newResult () {
     return results[randomResult];
       }
     
-let feelingLucky = newResult()
-console.log(feelingLucky);
+//let feelingLucky = newResult()
+//console.log(feelingLucky);
     
-server.get('/feelinglucky', (req,res) => res.send(feelingLucky))
+server.get('/feelinglucky', (req,res) => res.send(newResult()))
 
 module.exports = server;
 

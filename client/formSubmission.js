@@ -1,50 +1,45 @@
+const form = document.getElementById("my-form")
+const result = document.getElementById("result")
+const hit = document.createElement("p");
+const data1 = document.createElement('div');
 
-const button1 = document.getElementById('submit1');
-//const button2 = document.getElementById('submit2');
+function enterNewElement (resData) {
+  result.append(data1);
+  data1.append(hit)
+  hit.textContent = `${resData}`
+ }
+ 
 
-button1.addEventListener('click', getMessage1);
+   function getRandomResults() {
+       fetch("http://localhost:3000/feelinglucky")
+       .then(r => r.text())
+       .then(data => enterNewElement(data))
+      }
 
-function getMessage1() {
+
+
+function enterNewElement1 (resData1) {
+   result.append(data1)
+   data1.append(hit)
+   hit.textContent=`${resData1}`
+}
+
+ function getAllResults () {
     fetch('http://localhost:3000/googlesearch')
-    .then(r => r.text())
-    .then(console.log)
-    .catch(console.warn)
-};
-
-getMessage1();
-
-
-
-/*
-.then(appendCheeseData).catch(console.warn)
-
-function appendCheeseData(data) {
-    
+     .then (r => r.text ())
+     .then(data => enterNewElement1(data))
 }
 
 
-*/
-//function submitAllResults(e) {
- //   e.preventDefault();
-    
-  //  const resultsData = {
-     //   title: e.target.title.value,
-       // content: e.target.content.value
- //   };
-       
-     //   getAllResults()
-  //  }            
-//function getAllResults() {
-//    fetch('http://localhost:3000/googlesearch')
-  //  .then(r => r.json ())
- //   .then(logResults)
-   // .catch(err => console.warn('Opa, something went wrong!', err))  
-//}
 
-//function logResults(results) {
-   // console.log(results)
-//};
+form.addEventListener("submit", (e) => {
+e.preventDefault();
+console.log(e)
+  if (e.submitter.id ==="btn1") {
+getAllResults();
+   } else {
+getRandomResults();
+   }
+});
 
-
-
-
+console.log("Hey, I am connected")
